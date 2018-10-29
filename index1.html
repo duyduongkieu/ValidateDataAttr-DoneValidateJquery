@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>JS Bin</title>
+        <style>
+            .error{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <input type="text" class="ip form-control" name="" id="ip1"
+                data-min-length="8" data-max-length="12"
+                placeholder="username...">
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script>
+
+$(document).ready(function(){
+    $(document).on('input','.ip',function(){
+        var ts = $(this);
+        var dataMinLength = ts.data('minLength');
+        var dataMaxLength = ts.data('maxLength');
+        var valLength = ts.val().length;
+        var parent = ts.parent();
+        if(valLength < dataMinLength ||valLength > dataMaxLength ){
+            if(parent.find('.error').length==0){
+                parent.append('<p class="error">Username dai tu &nbsp' + dataMinLength+ '&nbsp den &nbsp' +dataMaxLength+ '&nbsp ki tu</p>')
+                
+            }
+        }else{
+            parent.find('.error').remove();
+        }
+    })
+})
+</script>
+    </body>
+</html>
